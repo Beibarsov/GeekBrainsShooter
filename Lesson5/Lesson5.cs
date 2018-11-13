@@ -1,0 +1,43 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Lesson5 : MonoBehaviour {
+
+    [SerializeField]
+    private int _count = 1;
+    [SerializeField]
+    private int _offset = 1;
+    [SerializeField]
+    private GameObject _obj;
+    [SerializeField]
+    private Axis _axis;
+
+    enum Axis
+    {
+        x,
+        y,
+        z
+    }
+
+     
+
+    // Use this for initialization
+    void Start () {
+        CreateObj();
+	}
+
+    public void CreateObj()
+    {
+        int x = 0;
+        int y = 0;
+        int z = 0;
+        if (_axis == Axis.x) x = _offset;
+        if (_axis == Axis.y) y = _offset;
+        if (_axis == Axis.z) z = _offset;
+        for (int i = 0; i < _count; i++)
+        {
+            Instantiate(_obj, new Vector3(x * i, y * i, z * i), Quaternion.identity);
+        }
+    }
+}
